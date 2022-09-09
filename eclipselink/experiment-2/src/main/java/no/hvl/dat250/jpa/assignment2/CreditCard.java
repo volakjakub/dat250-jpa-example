@@ -14,7 +14,7 @@ public class CreditCard {
     @JoinColumn(name = "pincode_id")
     private Pincode pincode;
     @ManyToOne
-    @JoinColumn(name = "bank_id")
+    @JoinColumn(name = "bank_id", insertable = false, updatable = false)
     private Bank bank;
     @ManyToOne
     @JoinColumn(name = "person_id", insertable = false, updatable = false)
@@ -46,6 +46,7 @@ public class CreditCard {
     }
     public void setBank(Bank bank) {
         this.bank = bank;
+        bank.getOwnedCards().add(this);
     }
     public void setPerson(Person person) {
         this.person = person;

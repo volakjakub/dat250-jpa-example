@@ -1,10 +1,7 @@
 package no.hvl.dat250.jpa.assignment2;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 public class Bank {
@@ -12,8 +9,9 @@ public class Bank {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    @OneToMany(mappedBy = "bank")
-    private Set<CreditCard> ownedCards;
+    @OneToMany
+    @JoinColumn(name = "bank_id")
+    private final Set<CreditCard> ownedCards = new HashSet<>();
 
     public Bank(String name) {
         this.name = name;
