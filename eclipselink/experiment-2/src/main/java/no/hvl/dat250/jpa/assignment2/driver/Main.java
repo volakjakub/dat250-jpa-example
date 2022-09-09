@@ -29,8 +29,14 @@ public class Main {
         address.addPerson(person);
         em.persist(address);
 
-        CreditCard cc1 = new CreditCard(12345, -5000,-10000, pincode, bank, person);
-        CreditCard cc2 = new CreditCard(123, 2000,1, pincode, bank, person);
+        CreditCard cc1 = new CreditCard(12345, -5000,-10000);
+        cc1.setBank(bank);
+        cc1.setPincode(pincode);
+        cc1.setPerson(person);
+        CreditCard cc2 = new CreditCard(123, 2000,1);
+        cc2.setBank(bank);
+        cc2.setPincode(pincode);
+        cc2.setPerson(person);
         em.persist(cc1);
         em.persist(cc2);
 

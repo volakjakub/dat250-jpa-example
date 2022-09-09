@@ -12,8 +12,9 @@ public class Person {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    @OneToMany(mappedBy = "person")
-    private Collection<CreditCard> creditCards;
+    @OneToMany
+    @JoinColumn(name = "person_id")
+    private final Collection<CreditCard> creditCards = new ArrayList<>();
     @ManyToMany(fetch=FetchType.LAZY, mappedBy = "people")
     private final Collection<Address> addresses = new ArrayList<>();
 

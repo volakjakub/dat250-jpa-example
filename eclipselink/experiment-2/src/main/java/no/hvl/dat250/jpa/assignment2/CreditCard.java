@@ -17,16 +17,13 @@ public class CreditCard {
     @JoinColumn(name = "bank_id")
     private Bank bank;
     @ManyToOne
-    @JoinColumn(name = "person_id")
+    @JoinColumn(name = "person_id", insertable = false, updatable = false)
     private Person person;
 
-    public CreditCard(Integer number, Integer limit, Integer balance, Pincode pincode, Bank bank, Person person) {
+    public CreditCard(Integer number, Integer limit, Integer balance) {
         this.number = number;
         this.limit = limit;
         this.balance = balance;
-        this.pincode = pincode;
-        this.bank = bank;
-        this.person = person;
     }
     public CreditCard() {}
     public int getNumber() {
@@ -43,5 +40,15 @@ public class CreditCard {
     }
     public Bank getOwningBank() {
         return this.bank;
+    }
+    public void setPincode(Pincode pincode) {
+        this.pincode = pincode;
+    }
+    public void setBank(Bank bank) {
+        this.bank = bank;
+    }
+    public void setPerson(Person person) {
+        this.person = person;
+        person.getCreditCards().add(this);
     }
 }
