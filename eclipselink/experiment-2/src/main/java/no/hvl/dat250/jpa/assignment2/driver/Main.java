@@ -29,7 +29,7 @@ public class Main {
         address.addPerson(person);
         em.persist(address);
 
-        CreditCard cc1 = new CreditCard(12345, -5000,-10000);
+        CreditCard cc1 = new CreditCard(12345, -10000,-5000);
         cc1.setBank(bank);
         cc1.setPincode(pincode);
         cc1.setPerson(person);
