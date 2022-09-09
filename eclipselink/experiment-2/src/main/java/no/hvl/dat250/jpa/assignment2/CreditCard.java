@@ -29,11 +29,11 @@ public class CreditCard {
     public int getNumber() {
         return this.number;
     }
-    public String getBalance() {
-        return this.balance.toString();
+    public Integer getBalance() {
+        return this.balance;
     }
-    public String getLimit() {
-        return this.limit.toString();
+    public Integer getLimit() {
+        return this.limit;
     }
     public Pincode getPincode() {
         return this.pincode;
