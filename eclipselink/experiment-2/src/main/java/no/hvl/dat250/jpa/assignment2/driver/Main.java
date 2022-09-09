@@ -1,7 +1,10 @@
 package no.hvl.dat250.jpa.assignment2.driver;
 
+import no.hvl.dat250.jpa.assignment2.*;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
 public class Main {
@@ -10,7 +13,30 @@ public class Main {
     public static void main(String[] args) {
         EntityManagerFactory factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
         EntityManager em = factory.createEntityManager();
+        EntityTransaction ex = em.getTransaction();
 
-        // TODO: Persist object world corresponding to the domain model of experiment 2.
+        ex.begin();
+        Bank bank = new Bank("Pengebank");
+        em.persist(bank);
+
+        Pincode pincode = new Pincode("123", 1);
+        em.persist(pincode);
+
+        Person person = new Person("Max Mustermann");
+        em.persist(person);
+
+        Address address = new Address("Inndalsveien", 28);
+        address.addPerson(person);
+        em.persist(address);
+
+        CreditCard cc1 = new CreditCard(12345, -5000,-10000, pincode, bank, person);
+        CreditCard cc2 = new CreditCard(123, 2000,1, pincode, bank, person);
+        em.persist(cc1);
+        em.persist(cc2);
+
+        em.flush();
+        ex.commit();
+        em.close();
+        factory.close();
     }
 }

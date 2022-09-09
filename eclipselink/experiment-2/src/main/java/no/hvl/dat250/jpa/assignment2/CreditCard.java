@@ -7,29 +7,41 @@ public class CreditCard {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private Integer number;
+    private Integer limit;
+    private Integer balance;
+    @OneToOne
+    @JoinColumn(name = "pincode_id")
+    private Pincode pincode;
+    @ManyToOne
+    @JoinColumn(name = "bank_id")
+    private Bank bank;
+    @ManyToOne
+    @JoinColumn(name = "person_id")
+    private Person person;
 
+    public CreditCard(Integer number, Integer limit, Integer balance, Pincode pincode, Bank bank, Person person) {
+        this.number = number;
+        this.limit = limit;
+        this.balance = balance;
+        this.pincode = pincode;
+        this.bank = bank;
+        this.person = person;
+    }
+    public CreditCard() {}
     public int getNumber() {
-        // TODO: implement method!
-        return 0;
+        return this.number;
     }
-
     public String getBalance() {
-        // TODO: implement method!
-        return null;
+        return this.balance.toString();
     }
-
     public String getLimit() {
-        // TODO: implement method!
-        return null;
+        return this.limit.toString();
     }
-
     public Pincode getPincode() {
-        // TODO: implement method!
-        return null;
+        return this.pincode;
     }
-
     public Bank getOwningBank() {
-        // TODO: implement method!
-        return null;
+        return this.bank;
     }
 }

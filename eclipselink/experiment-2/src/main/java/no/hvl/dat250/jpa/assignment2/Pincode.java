@@ -7,18 +7,21 @@ public class Pincode {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String pincode;
+    private Integer count;
 
+    public Pincode(String pincode, Integer count) {
+        this.pincode = pincode;
+        this.count = count;
+    }
+    public Pincode() {}
     public Long getId() {
         return id;
     }
-
     public String getPincode() {
-        // TODO: implement method!
-        return null;
+        return this.pincode;
     }
-
     public int getCount() {
-        // TODO: implement method!
-        return 0;
+        return this.count;
     }
 }
