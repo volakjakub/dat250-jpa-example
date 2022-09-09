@@ -29,8 +29,8 @@ public class Address {
     public String getStreet() {
         return this.street;
     }
-    public String getNumber() {
-        return this.number.toString();
+    public Integer getNumber() {
+        return this.number;
     }
     public String getOwners() {
         return this.people.toString();
