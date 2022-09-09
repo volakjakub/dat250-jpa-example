@@ -32,8 +32,8 @@ public class Address {
     public Integer getNumber() {
         return this.number;
     }
-    public String getOwners() {
-        return this.people.toString();
+    public Set<Person> getOwners() {
+        return this.people;
     }
     public void addPerson(Person person) {
         this.people.add(person);
