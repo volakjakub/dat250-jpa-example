@@ -13,7 +13,7 @@ public class Person {
     private Long id;
     private String name;
     @OneToMany(mappedBy = "person")
-    private final Collection<CreditCard> creditCards = new ArrayList<>();
+    private Collection<CreditCard> creditCards;
     @ManyToMany(fetch=FetchType.LAZY, mappedBy = "people")
     private final Collection<Address> addresses = new ArrayList<>();
 
